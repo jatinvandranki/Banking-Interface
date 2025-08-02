@@ -1,0 +1,108 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Banking UI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .balance {
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      color: #2e7d32;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .deposit {
+      background-color: #2196f3;
+      color: #fff;
+    }
+
+    .deposit:hover {
+      background-color: #1976d2;
+    }
+
+    .withdraw {
+      background-color: #f44336;
+      color: #fff;
+    }
+
+    .withdraw:hover {
+      background-color: #d32f2f;
+    }
+
+    @media (max-width: 480px) {
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>My Bank Account</h1>
+    <div class="balance" id="balance">₹0.00</div>
+    <div class="buttons">
+      <button class="deposit" onclick="updateBalance(100)">Deposit ₹100</button>
+      <button class="withdraw" onclick="updateBalance(-100)">Withdraw ₹100</button>
+    </div>
+  </div>
+
+  <script>
+    let balance = 0;
+
+    function updateBalance(amount) {
+      const newBalance = balance + amount;
+      if (newBalance < 0) {
+        alert("Insufficient funds!");
+        return;
+      }
+      balance = newBalance;
+      document.getElementById("balance").textContent = `₹${balance.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
